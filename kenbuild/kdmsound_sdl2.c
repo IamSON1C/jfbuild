@@ -6,6 +6,8 @@
 
 #if defined __APPLE__
 # include <SDL2/SDL.h>
+#elif defined(__amigaos4__)
+# include <SDL2/SDL.h>
 #else
 # include "SDL.h"
 #endif

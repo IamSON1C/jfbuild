@@ -4907,6 +4907,8 @@ static int loadtables(void)
         radarang[1279-i] = -radarang[i];
     }
 	calcbritable();
+	
+#ifndef __amigaos4__
 
     if (crc32once((unsigned char *)sintable, sizeof(sintable)) != 0xee1e7aba) {
         engineerrstr = "Calculation of sintable yielded unexpected results.";
@@ -4916,6 +4918,8 @@ static int loadtables(void)
         engineerrstr = "Calculation of radarang yielded unexpected results.";
         return 1;
     }
+    
+#endif
 
 	return 0;
 }
@@ -11531,11 +11535,11 @@ void buildprintf(const char *fmt, ...)
 	va_list va, vac;
 
 	va_start(va, fmt);
-
+#ifndef __amigaos4__
 	va_copy(vac, va);
 	vfprintf(stdout, fmt, vac);
 	va_end(vac);
-
+#endif
 	if (logfile) {
 		va_copy(vac, va);
 		vfprintf(logfile, fmt, vac);
@@ -11555,10 +11559,14 @@ void buildprintf(const char *fmt, ...)
 
 void buildputs(const char *str)
 {
+#ifndef __amigaos4__
     fputs(str, stdout);
+#endif
     if (logfile) fputs(str, logfile);
+#ifndef __amigaos4__
     initputs(str);  // the startup window
     OSD_Puts(str);  // the onscreen-display
+#endif
 }
 
 void buildsetlogfile(const char *fn)

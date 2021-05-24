@@ -14,7 +14,7 @@
 #  USE_ASM        - enables the use of assembly code
 #
 USE_POLYMOST ?= 1
-USE_OPENGL ?= 1
+USE_OPENGL ?= 0
 USE_ASM ?= 1
 
 # Debugging options
@@ -83,7 +83,7 @@ ENGINEOBJS+= \
 	$(SRC)/defs.$o \
 	$(SRC)/engine.$o \
 	$(SRC)/kplib.$o \
-	$(SRC)/mmulti.$o \
+	$(SRC)/mmulti_null.$o \
 	$(SRC)/osd.$o \
 	$(SRC)/pragmas.$o \
 	$(SRC)/scriptfile.$o \

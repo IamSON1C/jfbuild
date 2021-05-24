@@ -22,7 +22,7 @@
 # define _GNU_SOURCE 1
 #endif
 
-#if defined __APPLE__
+#if defined (__APPLE__) || defined(__amigaos4__)
 # include <SDL2/SDL.h>
 #else
 # include "SDL.h"
